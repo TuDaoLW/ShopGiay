@@ -1,8 +1,9 @@
+package UI;
 
-package bangiay;
+public class ShopGiayMain {
 
-public class ShopGiay {
-
+    static int sonv;
+    static String[] suaNV={"","","","","","","","",""};
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -16,7 +17,9 @@ public class ShopGiay {
         }
 
         java.awt.EventQueue.invokeLater(() -> {
-            new LoginPane().setVisible(true);
+            //new LoginPane().setVisible(true);
+            new menuAdmin().show();
+
         });
     }
 }

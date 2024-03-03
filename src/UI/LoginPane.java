@@ -2,9 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package bangiay;
+package UI;
 
+import entity.DB;
 import java.awt.Color;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JButton;
 
 /**
@@ -81,16 +84,16 @@ public class LoginPane extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Username");
+        jLabel2.setText("Tên đăng nhập");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Password");
+        jLabel3.setText("Mật khẩu");
 
         bt_login.setBackground(new java.awt.Color(153, 153, 255));
         bt_login.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         bt_login.setForeground(new java.awt.Color(255, 255, 255));
-        bt_login.setText("Login");
+        bt_login.setText("Log In");
         bt_login.setBorder(null);
         bt_login.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         bt_login.setFocusPainted(false);
@@ -196,10 +199,7 @@ public class LoginPane extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cancelActionPerformed
-        // TODO add your handling code here:
-        tf_passwd.setText("");
-        tf_usrname.setText("");
-        System.exit(0);
+        System.exit(0);// thoat app
     }//GEN-LAST:event_bt_cancelActionPerformed
 
     private void bt_cancelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_cancelMousePressed
@@ -217,16 +217,26 @@ public class LoginPane extends javax.swing.JFrame {
     private void bt_loginMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_loginMouseReleased
         bt_setColorReleased(bt_login);
     }//GEN-LAST:event_bt_loginMouseReleased
-    int login(String name, String pw) {
-        return 1;
-    }
-    private void bt_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_loginActionPerformed
-        // TODO add your handling code here:
-        tf_usrname.getText();
-        tf_passwd.getText();
-        this.dispose();
 
-        new menuAdmin().show();
+    private void bt_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_loginActionPerformed
+        lb_info.setText("...");
+        int[] t = login(tf_usrname.getText(), tf_passwd.getText());
+        System.out.println(t[0] + " " + t[1]);
+        switch (t[0]) {
+            case 0  ->
+                lb_info.setText("tài khoản đã bị vô hiệu hóa");
+
+            case 1 -> {
+                this.dispose();
+                if(t[1]==1) new menuAdmin().show();
+                else{
+                    new menuNhanvien().show();
+                }
+            }
+            default ->
+
+                lb_info.setText("Sai thông tin đăng nhập");
+        }
     }//GEN-LAST:event_bt_loginActionPerformed
     void bt_setColorPressed(JButton bt) {
         bt.setBackground(new Color(102, 102, 255));
@@ -236,6 +246,19 @@ public class LoginPane extends javax.swing.JFrame {
         bt.setBackground(new Color(153, 153, 255));
     }
 
+    int[] login(String a, String b) {
+        ResultSet resultSet = DB.getData("select * from dbo.person where username = '" + a + "' and password = '" + b + "' ");
+        int[] array = {-1,-1};
+        try {
+            while (resultSet.next()) {
+                array[0] = resultSet.getInt(7);
+                array[1] = resultSet.getInt(9);
+                return array;
+            }
+        } catch (SQLException ex) {
+        }
+        return array;
+    }
     /**
      * @param args the command line arguments
      */
