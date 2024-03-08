@@ -1,9 +1,7 @@
 package UI;
 
 public class ShopGiayMain {
-
-    static int sonv;
-    static String[] suaNV={"","","","","","","","",""};
+    static String[] el ={null,null};
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -17,9 +15,11 @@ public class ShopGiayMain {
         }
 
         java.awt.EventQueue.invokeLater(() -> {
+            
             //new LoginPane().setVisible(true);
-            new menuAdmin().show();
-
+            new menuAdmin().setVisible(true);
+            //
+            //DBconnector.getKeyID("insert into dbo.Giay (name) values (' ') ");
         });
     }
 }

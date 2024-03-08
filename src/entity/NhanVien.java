@@ -8,17 +8,17 @@ package entity;
  *
  * @author TuDao
  */
-public class person {
+public class NhanVien {
 
     String usrname, passwd, hoten, diachi, sdt;
     int login_state, rate, chucvu,gioitinh;
 
-    public person() {
+    public NhanVien() {
         this.login_state = 1;// co the dang nhap
         this.chucvu = 1;// nvien
     }
 
-    public person(String usrname, String passwd) {
+    public NhanVien(String usrname, String passwd) {
         this.usrname = usrname;
         this.passwd = passwd;
         this.login_state = 1;// co the dang nhap
