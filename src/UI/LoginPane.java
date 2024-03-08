@@ -27,7 +27,7 @@ public class LoginPane extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("BANH GIAY");
+        setTitle("BAN GIAY");
         setLocation(new java.awt.Point(150, 100));
         setResizable(false);
 
