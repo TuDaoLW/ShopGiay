@@ -1,23 +1,23 @@
 package ConTrollers;
 
+import UI.menuAdmin;
+import UI.menuNhanvien;
 import entity.DBconnector;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import javax.swing.JFrame;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.table.TableModel;
 
 public class HangHoaCtrl {
 
     public static int numberofHH;
     public static String[] suaHH = {"", "", "", "", "", "", "", "", "", ""};
 
-    public static void themHH(
+    public static boolean themHH(
             JTextField tensp, JTextField hang,
             JTextField size, JTextField mausac,
             JTextField soluong, JTextField giaban,
-            JTextField gianhap, JFrame f) {
+            JTextField gianhap, JDialog f) {
         String err = "";
         if (DBconnector.kiemtratrunglap("select * from dbo.Giay "
                 + "where TenSP ='" + tensp.getText() + "' "
@@ -26,7 +26,7 @@ public class HangHoaCtrl {
                 + "and MauSac ='" + mausac.getText() + "' ")) {
             // xem sp đã có hay chưa 
             JOptionPane.showMessageDialog(f, "Sản phẩm đã tồn tại");
-            return;
+            return false;
         }
         try {
             err = "size";
@@ -39,7 +39,7 @@ public class HangHoaCtrl {
             Integer.parseInt(gianhap.getText());
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(f, "Nhập số cho " + err);
-            return;
+            return false;
         }
 
         DBconnector.getKeyID("INSERT INTO dbo.Giay (TenSp, Hang, Size, MauSac, SoLuong, GiaBan, GiaNhap) \n"
@@ -50,16 +50,22 @@ public class HangHoaCtrl {
                 + " " + Integer.valueOf(soluong.getText()) + ","
                 + " " + Integer.valueOf(giaban.getText()) + ","
                 + " " + Integer.valueOf(gianhap.getText()) + ") \n");
-        XemVaTimKiemCtrl.updatetableHH();
+        if (NvienCtrl.currentusr[6].equals("1")) {
+            XemVaTimKiemCtrl.updatetableHH(menuAdmin.tbHH, menuAdmin.lbsoHH);
+        } else {
+            XemVaTimKiemCtrl.updatetableHH(menuNhanvien.tbHHnv, menuNhanvien.lbsoHHnv);
+        }
         JOptionPane.showMessageDialog(f, "Thêm hàng thành công");
+        return true;
     }
 
-    public static void suaHHf(
+    public static boolean suaHHf(
             JTextField tensp, JTextField hang,
             JTextField size, JTextField mausac,
             JTextField soluong, JTextField giaban,
-            JTextField gianhap, JFrame f) {
+            JTextField gianhap, JDialog f) {
         String err = "";
+
         try {
             err = "size";
             Integer.parseInt(size.getText());
@@ -71,7 +77,7 @@ public class HangHoaCtrl {
             Integer.parseInt(gianhap.getText());
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(f, "Nhập số cho " + err);
-            return;
+            return false;
         }
         DBconnector.getKeyID(
                 "update dbo.Giay\n"
@@ -85,9 +91,24 @@ public class HangHoaCtrl {
                 + "GiaNhap ='" + Integer.valueOf(gianhap.getText()) + "' \n"
                 + "where ID = '" + Integer.valueOf(suaHH[0]) + "'\n ");
 
-        XemVaTimKiemCtrl.updatetableHH();
+        if (NvienCtrl.currentusr[6].equals("1")) {
+            XemVaTimKiemCtrl.updatetableHH(menuAdmin.tbHH, menuAdmin.lbsoHH);
+        } else {
+            XemVaTimKiemCtrl.updatetableHH(menuNhanvien.tbHHnv, menuNhanvien.lbsoHHnv);
+        }
         JOptionPane.showMessageDialog(f, "Cập nhật thành công");
         f.dispose();
+        return true;
     }
 
+    public static boolean laythongtinHH(JTable tb) {
+        int row = tb.getSelectedRow();
+        if (row < 0 || tb.getValueAt(row, 0).equals("")) {
+            return false;
+        }
+        for (int i = 0; i < tb.getColumnCount(); i++) {
+            HangHoaCtrl.suaHH[i] = (String) tb.getValueAt(row, i);
+        }
+        return true;
+    }
 }

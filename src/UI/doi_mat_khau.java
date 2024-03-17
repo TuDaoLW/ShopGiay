@@ -1,12 +1,17 @@
-
 package UI;
-//check
-import ConTrollers.NvienCtrl;
+
 import ConTrollers.AccCtrl;
+import ConTrollers.NvienCtrl;
+import java.awt.Point;
 
-public class doi_mat_khau extends javax.swing.JFrame {
+public class doi_mat_khau extends javax.swing.JDialog {
 
-    public doi_mat_khau() {
+    public doi_mat_khau(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
+        Point a = parent.getLocation();
+        a.x += 250;
+        a.y += 80;
+        this.setLocation(a);
         initComponents();
         jLabel2.setText(NvienCtrl.currentusr[0]);
     }
@@ -29,8 +34,7 @@ public class doi_mat_khau extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setLocation(new java.awt.Point(300, 150));
-        setResizable(false);
+        setTitle("Đổi mật khẩu");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -116,16 +120,16 @@ public class doi_mat_khau extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(33, 33, 33)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(34, 34, 34)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -142,13 +146,14 @@ public class doi_mat_khau extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        AccCtrl.doimatkhau(jPasswordField1, jPasswordField2, jPasswordField3);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        AccCtrl.doimatkhau(jPasswordField1, jPasswordField2, jPasswordField3, this);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

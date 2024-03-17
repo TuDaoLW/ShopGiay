@@ -1,25 +1,58 @@
 package ConTrollers;
 
-import static UI.menuAdmin.jTable4;
-import static UI.menuAdmin.tbHH;
-import static UI.menuAdmin.soNV;
-import static UI.menuAdmin.lbsoHH;
+import UI.menuAdmin;
 import entity.DBconnector;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JLabel;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.TableModel;
 
 public class XemVaTimKiemCtrl {
 
     public static void updatetableNV() {// cap nhat bang nhan vien
-        NvienCtrl.numberofnv = DisplayData(jTable4, "select * from dbo.NhanVien ");
-        soNV.setText("" + NvienCtrl.numberofnv);
+        NvienCtrl.numberofnv = DisplayData(menuAdmin.tbNV, "select * from dbo.NhanVien ");
+        menuAdmin.soNV.setText("" + NvienCtrl.numberofnv);
     }
 
-    public static void updatetableHH() {// cap nhat bang hang hoa
-        HangHoaCtrl.numberofHH = DisplayData(tbHH, "select * from dbo.Giay ");
-        lbsoHH.setText("" + HangHoaCtrl.numberofHH);
+    public static void updatetableHH(JTable tbhh, JLabel lbsohh) {// cap nhat bang hang hoa
+        HangHoaCtrl.numberofHH = DisplayData(tbhh, "select * from dbo.Giay ");
+        lbsohh.setText("" + HangHoaCtrl.numberofHH);
+    }
+
+    public static void xemdoanhso(JTable tb, int m, int y, JLabel lbkq) {// cap nhat bang doanh so
+        String stm1 = "select TenNV, count(*), sum(TongTien), sum(LoiNhuan)\n"
+                + "from shopgiay.dbo.HoaDon\n"
+                + "where month(Thoigian)='" + m + "' and year(ThoiGian)='" + y + "'\n"
+                + "group by TenNV\n"
+                + "order by sum(LoiNhuan) DESC, sum(TongTien) DESC";
+        String stm2 = "select sum(TongTien), sum(LoiNhuan)\n"
+                + "from shopgiay.dbo.HoaDon\n"
+                + "where month(Thoigian)='" + m + "' and year(ThoiGian)='" + y + "' ";
+        if (!NvienCtrl.currentusr[6].equals("1")) {
+            stm1 = "select * from shopgiay.dbo.HoaDon \n"
+                    + "where month(Thoigian)='" + m
+                    + "' and year(ThoiGian)='" + y
+                    + "' and TenNV='" + NvienCtrl.currentusr[0] + "'\n"
+                    + "order by ThoiGian DESC ";
+            stm2 = "select sum(TongTien), sum(LoiNhuan)\n"
+                    + "from shopgiay.dbo.HoaDon\n"
+                    + "where month(Thoigian)='" + m + "' and year(ThoiGian)='" + y + "' and TenNV='" + NvienCtrl.currentusr[0] + "' ";
+        }
+        DisplayData(tb, stm1);
+        int sum = 0, pro = 0;
+        ResultSet rs = DBconnector.getData(stm2);
+        try {
+            while (rs.next()) {
+                sum = rs.getInt(1);
+                pro = rs.getInt(2);
+                System.out.println(sum + ":" + pro);
+            }
+        } catch (SQLException ex) {
+            System.out.println("No record in HD");
+        }
+        lbkq.setText(sum + "/" + pro);
     }
 
     public static int DisplayData(javax.swing.JTable a, String stm) {
@@ -47,7 +80,7 @@ public class XemVaTimKiemCtrl {
         return records; // so ban ghi thoa man truy van
     }
 
-    public static void timHang(JTextField hang, JTextField size, JTextField mau) {
+    public static void timHang(JTextField hang, JTextField size, JTextField mau, JTable tb) {
         String[] el = {hang.getText(), size.getText(), mau.getText(), ""};
         //el[3] la cau querry DB
         if (!el[0].equals("")) {
@@ -66,10 +99,10 @@ public class XemVaTimKiemCtrl {
             el[3] += " MauSac like '%" + el[2] + "%' ";
         }
         if (!el[3].equals("")) {
-            DisplayData(tbHH, "select * from dbo.Giay where " + el[3]);
+            DisplayData(tb, "select * from dbo.Giay where " + el[3]);
 
         } else {
-            DisplayData(tbHH, "select * from dbo.Giay");
+            DisplayData(tb, "select * from dbo.Giay");
         }
         hang.setText("");
         size.setText("");

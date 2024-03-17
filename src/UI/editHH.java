@@ -1,11 +1,19 @@
+
 package UI;
-//check
 
 import ConTrollers.HangHoaCtrl;
+import java.awt.Point;
 
-public class editHH extends javax.swing.JFrame {
 
-    public editHH() {
+public class editHH extends javax.swing.JDialog {
+
+  
+    public editHH(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
+        Point a = parent.getLocation();
+        a.x += 150;
+        a.y += 50;
+        this.setLocation(a);
         initComponents();
         lbID.setText(HangHoaCtrl.suaHH[0]);
         tenhang.setText(HangHoaCtrl.suaHH[1]);
@@ -17,6 +25,7 @@ public class editHH extends javax.swing.JFrame {
         giamua.setText(HangHoaCtrl.suaHH[7]);
     }
 
+  
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -42,9 +51,7 @@ public class editHH extends javax.swing.JFrame {
         giaban = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Sửa thông tin nhân viên");
-        setLocation(new java.awt.Point(150, 70));
-        setResizable(false);
+        setTitle("Cập nhật thông tin hàng hóa");
 
         jLabel1.setText("Tên hàng");
 
@@ -85,7 +92,7 @@ public class editHH extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
+                        .addGap(36, 36, 36)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -95,7 +102,7 @@ public class editHH extends javax.swing.JFrame {
                             .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(giamua, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(giaban, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -103,18 +110,15 @@ public class editHH extends javax.swing.JFrame {
                             .addComponent(mau, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(size, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(hang, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(tenhang, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+                            .addComponent(tenhang, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lbID, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(79, 79, 79)
                         .addComponent(jButton1)
                         .addGap(46, 46, 46)
                         .addComponent(jButton2)))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
-
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {giaban, giamua, hang, lbID, mau, size, soluong, tenhang});
-
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -154,7 +158,7 @@ public class editHH extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -178,6 +182,7 @@ public class editHH extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         HangHoaCtrl.suaHHf(tenhang, hang, size, mau, soluong, giaban, giamua, this);
     }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField giaban;

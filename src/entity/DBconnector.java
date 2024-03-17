@@ -29,7 +29,7 @@ public class DBconnector {
             prepsInsertProduct.execute();
             resultSet = prepsInsertProduct.getGeneratedKeys();
             while (resultSet.next()) {
-                System.out.println(resultSet.getInt(1));
+                System.out.println("genarated"+resultSet.getInt(1));
                 return resultSet.getInt(1);
             }
         } catch (Exception e) {

@@ -37,6 +37,7 @@ public class LogInCtrl {
             case 1 -> {
                 //luu ten nguoi dang nhap hien tai
                 if (array[1] == 1) {
+                    //NvienCtrl.currentusr[6];
                     new menuAdmin().setVisible(true);
                 } else {
                     new menuNhanvien().setVisible(true);

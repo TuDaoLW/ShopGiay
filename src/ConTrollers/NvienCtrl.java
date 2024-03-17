@@ -1,11 +1,10 @@
 package ConTrollers;
 
+import static UI.menuAdmin.tbNV;
 import entity.DBconnector;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -14,21 +13,21 @@ public class NvienCtrl {
 
     public static int numberofnv; //tong so nhan vien
     public static String[] suaNV = {"", "", "", "", "", "", "", ""};// luu thong tin nguoi dung can sua doi
-    public static String[] currentusr = {"", "", "", "", "", "", "", ""}; // luu thong tin nguoi dung hien tai
+    public static String[] currentusr = {"", "", "", "", "", "", "cv", "tt"}; // luu thong tin nguoi dung hien tai
 
-    public static void themNV(
+    public static boolean themNV(
             JTextField sdt, JTextField password,
             JTextField name, int gioitinh,
             JTextField address, JTextField rate,
-            JComboBox cboxchucvu, JFrame f) {
+            JComboBox cboxchucvu, JDialog f) {
         //them nhan vien moi
         if (sdt.getText().equals("") || password.getText().equals("")) {
             JOptionPane.showMessageDialog(f, "SDT hoặc password trống");
-            return;
+            return false;
         }
         if (DBconnector.kiemtratrunglap("select * from dbo.NhanVien where SoDienThoai ='" + sdt.getText() + "'")) {
             JOptionPane.showMessageDialog(f, "Tên đăng nhập đã tồn tại");
-            return;
+            return false;
         }
         try {
             Integer.parseInt(rate.getText());
@@ -46,19 +45,20 @@ public class NvienCtrl {
                 + " " + 1 + ") \n");
         XemVaTimKiemCtrl.updatetableNV();
         JOptionPane.showMessageDialog(f, "Thêm thành công");
+        return true;
     }
 
-    public static void suaNV(
+    public static boolean suaNV(
             JTextField sdt, JTextField password,
             JTextField name, int gioitinh,
             JTextField address, JTextField rate,
             JComboBox cboxchucvu, JCheckBox jcbstate,
-            JFrame f, JLabel lbuser
+            JDialog f, JLabel lbuser
     ) {
         // sua thong tin nhan vien
         if (sdt.getText().equals("") || password.getText().equals("")) {
             JOptionPane.showMessageDialog(f, "Username hoặc password trống");
-            return;
+            return false;
         }
         int trangthai = 1;
         if (jcbstate.isSelected()) {
@@ -68,7 +68,7 @@ public class NvienCtrl {
             Integer.parseInt(rate.getText());
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(f, "Lương không hợp lệ");
-            return;
+            return false;
         }
         DBconnector.getKeyID("update dbo.NhanVien\n"
                 + "set\n"
@@ -86,6 +86,18 @@ public class NvienCtrl {
         XemVaTimKiemCtrl.updatetableNV();
         JOptionPane.showMessageDialog(f, "Cập nhật thành công");
         f.dispose();
+        return true;
+    }
+
+    public static boolean laythongtinNV() {
+        int row = tbNV.getSelectedRow();
+        if (row < 0 || tbNV.getValueAt(row, 0).equals("")) {
+            return false;
+        }
+        for (int i = 0; i < tbNV.getColumnCount(); i++) {
+            NvienCtrl.suaNV[i] = (String) tbNV.getValueAt(row, i);
+        }
+        return true;
     }
 
 }
