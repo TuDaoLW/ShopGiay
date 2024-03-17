@@ -16,8 +16,8 @@ public class ShopGiayMain {
 
         java.awt.EventQueue.invokeLater(() -> {
 
-            //new LoginPane().setVisible(true);
-            new menuAdmin().setVisible(true);
+            new LoginPane().setVisible(true);
+//            new menuAdmin().setVisible(true);
             //
             //DBconnector.getKeyID("insert into dbo.Giay (name) values (' ') ");
         });
