@@ -860,7 +860,7 @@ public class menuNhanvien extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_taikhoanMousePressed
 
     private void bt_taikhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_taikhoanActionPerformed
-        AccCtrl.showUserData(lbname, lbten, lbsex, lbadd, lbluong, lbchucvu);
+        AccCtrl.HienThiThongTinUser(lbname, lbten, lbsex, lbadd, lbluong, lbchucvu);
         cards.show(pnlCenter, "cardTK");
     }//GEN-LAST:event_bt_taikhoanActionPerformed
 

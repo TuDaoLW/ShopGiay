@@ -42,7 +42,7 @@ public class HangHoaCtrl {
             return false;
         }
 
-        DBconnector.getKeyID("INSERT INTO dbo.Giay (TenSp, Hang, Size, MauSac, SoLuong, GiaBan, GiaNhap) \n"
+        DBconnector.pushData("INSERT INTO dbo.Giay (TenSp, Hang, Size, MauSac, SoLuong, GiaBan, GiaNhap) \n"
                 + "	VALUES ('" + tensp.getText() + "',"
                 + " '" + hang.getText() + "', "
                 + " " + Integer.valueOf(size.getText()) + ","
@@ -79,7 +79,7 @@ public class HangHoaCtrl {
             JOptionPane.showMessageDialog(f, "Nhập số cho " + err);
             return false;
         }
-        DBconnector.getKeyID(
+        DBconnector.pushData(
                 "update dbo.Giay\n"
                 + "set\n"
                 + "TenSP = '" + tensp.getText() + "',\n"

@@ -34,7 +34,7 @@ public class NvienCtrl {
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(f, "Lương không hợp lệ");
         }
-        DBconnector.getKeyID("INSERT INTO dbo.NhanVien (SoDienThoai, Password, HoTen, GioiTinh, DiaChi, Luong, ChucVu, TrangThaiTaiKhoan) \n"
+        DBconnector.pushData("INSERT INTO dbo.NhanVien (SoDienThoai, Password, HoTen, GioiTinh, DiaChi, Luong, ChucVu, TrangThaiTaiKhoan) \n"
                 + "	VALUES ('" + sdt.getText() + "',"
                 + " '" + password.getText() + "', "
                 + "'" + name.getText() + "',"
@@ -70,7 +70,7 @@ public class NvienCtrl {
             JOptionPane.showMessageDialog(f, "Lương không hợp lệ");
             return false;
         }
-        DBconnector.getKeyID("update dbo.NhanVien\n"
+        DBconnector.pushData("update dbo.NhanVien\n"
                 + "set\n"
                 + "SoDienThoai = '" + sdt.getText() + "',\n"
                 + "Password = '" + password.getText() + "',\n"

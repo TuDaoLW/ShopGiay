@@ -19,7 +19,7 @@ public class ShopGiayMain {
             new LoginPane().setVisible(true);
 //            new menuAdmin().setVisible(true);
             //
-            //DBconnector.getKeyID("insert into dbo.Giay (name) values (' ') ");
+            //DBconnector.pushData("insert into dbo.Giay (name) values (' ') ");
         });
     }
 }

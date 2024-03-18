@@ -22,10 +22,10 @@ public class XemVaTimKiemCtrl {
     }
 
     public static void xemdoanhso(JTable tb, int m, int y, JLabel lbkq) {// cap nhat bang doanh so
-        String stm1 = "select TenNV, count(*), sum(TongTien), sum(LoiNhuan)\n"
+        String stm1 = "select SDT, count(*), sum(TongTien), sum(LoiNhuan)\n"
                 + "from shopgiay.dbo.HoaDon\n"
                 + "where month(Thoigian)='" + m + "' and year(ThoiGian)='" + y + "'\n"
-                + "group by TenNV\n"
+                + "group by SDT\n"
                 + "order by sum(LoiNhuan) DESC, sum(TongTien) DESC";
         String stm2 = "select sum(TongTien), sum(LoiNhuan)\n"
                 + "from shopgiay.dbo.HoaDon\n"
@@ -34,11 +34,11 @@ public class XemVaTimKiemCtrl {
             stm1 = "select * from shopgiay.dbo.HoaDon \n"
                     + "where month(Thoigian)='" + m
                     + "' and year(ThoiGian)='" + y
-                    + "' and TenNV='" + NvienCtrl.currentusr[0] + "'\n"
+                    + "' and SDT='" + NvienCtrl.currentusr[0] + "'\n"
                     + "order by ThoiGian DESC ";
             stm2 = "select sum(TongTien), sum(LoiNhuan)\n"
                     + "from shopgiay.dbo.HoaDon\n"
-                    + "where month(Thoigian)='" + m + "' and year(ThoiGian)='" + y + "' and TenNV='" + NvienCtrl.currentusr[0] + "' ";
+                    + "where month(Thoigian)='" + m + "' and year(ThoiGian)='" + y + "' and SDT='" + NvienCtrl.currentusr[0] + "' ";
         }
         DisplayData(tb, stm1);
         int sum = 0, pro = 0;

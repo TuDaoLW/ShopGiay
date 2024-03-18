@@ -23,7 +23,7 @@ public class DBconnector {
         return resultSet; //kq 
     }
 
-    public static int getKeyID(String stm) {// dung de ghi du lieu len DB, tra ve ID cua doi tuong
+    public static int pushData(String stm) {// dung de ghi du lieu len DB, tra ve ID cua doi tuong
         ResultSet resultSet;
         try (Connection connection = DriverManager.getConnection(dblink); PreparedStatement prepsInsertProduct = connection.prepareStatement(stm, Statement.RETURN_GENERATED_KEYS);) {
             prepsInsertProduct.execute();

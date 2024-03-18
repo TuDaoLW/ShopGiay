@@ -36,12 +36,12 @@ public class AccCtrl {
             JOptionPane.showMessageDialog(jd, "Mật khẩu mới giống mật khẩu cũ");
             return;
         }
-        DBconnector.getKeyID("update dbo.NhanVien set Password = '" + tx2 + "' where SoDienThoai='" + NvienCtrl.currentusr[0] + "' ");
+        DBconnector.pushData("update dbo.NhanVien set Password = '" + tx2 + "' where SoDienThoai='" + NvienCtrl.currentusr[0] + "' ");
         JOptionPane.showMessageDialog(jd, "Đổi mật khẩu thành công");
         jd.dispose();
     }
 
-    public static void showUserData(
+    public static void HienThiThongTinUser(
             JLabel lbsdt, JLabel lbten,
             JLabel lbsex, JLabel lbadd,
             JLabel lbluong, JLabel lbchucvu

@@ -110,7 +110,7 @@ public class HoaDonCtrl {
         System.out.println(time);
         lbtime.setText(date + " " + time.getHour() + ":" + time.getMinute());
         usr.setText(NvienCtrl.currentusr[2]);
-        maHD = DBconnector.getKeyID("insert into dbo.HoaDon(TenKH) values('empty')");
+        maHD = DBconnector.pushData("insert into dbo.HoaDon(TenKH) values('empty')");
         lbmaHD.setText(maHD + "");
         //tao hoa don rong, tra ve ma hoa don
         Item.dsmuaH.clear();
@@ -119,14 +119,14 @@ public class HoaDonCtrl {
     }
 
     public static void huyHD(JLabel maHD) {// xoa hoa don vua duoc tao o database
-        DBconnector.getKeyID("delete from dbo.HoaDon where MaHD ='" + maHD.getText() + "' ");
+        DBconnector.pushData("delete from dbo.HoaDon where MaHD ='" + maHD.getText() + "' ");
     }
 
     public static void xacnhanthem(JTextField tfKH) {
         // ghi hoa don vao database
-        DBconnector.getKeyID("update dbo.HoaDon\n"
+        DBconnector.pushData("update dbo.HoaDon\n"
                 + "set\n"
-                + "TenNV='" + NvienCtrl.currentusr[0] + "',\n"
+                + "SDT='" + NvienCtrl.currentusr[0] + "',\n"
                 + "TenKh='" + tfKH.getText() + "',\n"
                 + "TongTien='" + tong + "',\n"
                 + "LoiNhuan='" + loinhuan + "',\n"
@@ -134,7 +134,7 @@ public class HoaDonCtrl {
                 + "where MaHD='" + maHD + "' ");
         //ghi chitiet HD vao DB
         for (Item it : Item.dsmuaH) {
-            DBconnector.getKeyID("insert into dbo.ChiTietHD(MaHD,MaHH,SoLuong,GiaBan) "
+            DBconnector.pushData("insert into dbo.ChiTietHD(MaHD,MaHH,SoLuong,GiaBan) "
                     + "values("
                     + "'" + maHD + "',"
                     + "'" + it.ID + "',"
