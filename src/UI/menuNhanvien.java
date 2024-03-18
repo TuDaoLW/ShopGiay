@@ -19,7 +19,7 @@ public class menuNhanvien extends javax.swing.JFrame {
         usname.setText(NvienCtrl.currentusr[2]);
         resizetbHH();
         resizetbHD();
-        XemVaTimKiemCtrl.updatetableHH(tbHHnv, lbsoHHnv);
+        XemVaTimKiemCtrl.showtableHH(tbHHnv, lbsoHHnv);
     }
     
     @SuppressWarnings("unchecked")

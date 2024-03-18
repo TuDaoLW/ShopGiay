@@ -11,12 +11,12 @@ import javax.swing.table.TableModel;
 
 public class XemVaTimKiemCtrl {
 
-    public static void updatetableNV() {// cap nhat bang nhan vien
+    public static void showtableNV() {// cap nhat bang nhan vien
         NvienCtrl.numberofnv = DisplayData(menuAdmin.tbNV, "select * from dbo.NhanVien ");
         menuAdmin.soNV.setText("" + NvienCtrl.numberofnv);
     }
 
-    public static void updatetableHH(JTable tbhh, JLabel lbsohh) {// cap nhat bang hang hoa
+    public static void showtableHH(JTable tbhh, JLabel lbsohh) {// cap nhat bang hang hoa
         HangHoaCtrl.numberofHH = DisplayData(tbhh, "select * from dbo.Giay ");
         lbsohh.setText("" + HangHoaCtrl.numberofHH);
     }

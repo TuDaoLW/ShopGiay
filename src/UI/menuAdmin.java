@@ -22,8 +22,8 @@ public class menuAdmin extends javax.swing.JFrame {
         resizetbNV();
         resizetbHD();
         usname.setText(NvienCtrl.currentusr[2]);
-        XemVaTimKiemCtrl.updatetableHH(tbHH, lbsoHH);
-        XemVaTimKiemCtrl.updatetableNV();
+        XemVaTimKiemCtrl.showtableHH(tbHH, lbsoHH);
+        XemVaTimKiemCtrl.showtableNV();
     }
 
     @SuppressWarnings("unchecked")

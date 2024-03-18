@@ -43,7 +43,7 @@ public class NvienCtrl {
                 + " " + Integer.valueOf(rate.getText()) + ","
                 + " " + cboxchucvu.getSelectedIndex() + ","
                 + " " + 1 + ") \n");
-        XemVaTimKiemCtrl.updatetableNV();
+        XemVaTimKiemCtrl.showtableNV();
         JOptionPane.showMessageDialog(f, "Thêm thành công");
         return true;
     }
@@ -83,7 +83,7 @@ public class NvienCtrl {
                 + "where SoDienThoai like '%" + lbuser.getText() + "%'"
         );
         System.out.println(cboxchucvu.getSelectedIndex());
-        XemVaTimKiemCtrl.updatetableNV();
+        XemVaTimKiemCtrl.showtableNV();
         JOptionPane.showMessageDialog(f, "Cập nhật thành công");
         f.dispose();
         return true;

@@ -51,9 +51,9 @@ public class HangHoaCtrl {
                 + " " + Integer.valueOf(giaban.getText()) + ","
                 + " " + Integer.valueOf(gianhap.getText()) + ") \n");
         if (NvienCtrl.currentusr[6].equals("1")) {
-            XemVaTimKiemCtrl.updatetableHH(menuAdmin.tbHH, menuAdmin.lbsoHH);
+            XemVaTimKiemCtrl.showtableHH(menuAdmin.tbHH, menuAdmin.lbsoHH);
         } else {
-            XemVaTimKiemCtrl.updatetableHH(menuNhanvien.tbHHnv, menuNhanvien.lbsoHHnv);
+            XemVaTimKiemCtrl.showtableHH(menuNhanvien.tbHHnv, menuNhanvien.lbsoHHnv);
         }
         JOptionPane.showMessageDialog(f, "Thêm hàng thành công");
         return true;
@@ -92,9 +92,9 @@ public class HangHoaCtrl {
                 + "where ID = '" + Integer.valueOf(suaHH[0]) + "'\n ");
 
         if (NvienCtrl.currentusr[6].equals("1")) {
-            XemVaTimKiemCtrl.updatetableHH(menuAdmin.tbHH, menuAdmin.lbsoHH);
+            XemVaTimKiemCtrl.showtableHH(menuAdmin.tbHH, menuAdmin.lbsoHH);
         } else {
-            XemVaTimKiemCtrl.updatetableHH(menuNhanvien.tbHHnv, menuNhanvien.lbsoHHnv);
+            XemVaTimKiemCtrl.showtableHH(menuNhanvien.tbHHnv, menuNhanvien.lbsoHHnv);
         }
         JOptionPane.showMessageDialog(f, "Cập nhật thành công");
         f.dispose();
