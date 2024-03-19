@@ -1376,7 +1376,7 @@ public class menuAdmin extends javax.swing.JFrame {
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
         // tim nhan vien
-        XemVaTimKiemCtrl.DisplayData(tbNV, "select * from dbo.NhanVien where HoTen like '%" + timnv.getText() + "%' ");
+        XemVaTimKiemCtrl.timNhanVien(tbNV, timnv);
         timnv.setText("");
     }//GEN-LAST:event_jButton13ActionPerformed
 
