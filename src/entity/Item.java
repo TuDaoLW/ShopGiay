@@ -9,12 +9,14 @@ public class Item {
     public int SL;
     public int sell;
     public int buy;
+    public int MAX;
 
-    public Item(String ID, int SL, int sell, int buy) {
+    public Item(String ID, int SL, int sell, int buy, int max) {
         this.ID = ID;
         this.SL = SL;
         this.sell = sell;
         this.buy = buy;
+        this.MAX = max;
     }
 
     public static void delete(String id) {

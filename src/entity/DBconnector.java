@@ -23,7 +23,7 @@ public class DBconnector {
         return resultSet; //kq 
     }
 
-    public static int pushData(String stm) {// dung de ghi du lieu len DB, tra ve ID cua doi tuong
+    public static int updateData(String stm) {// dung de ghi du lieu len DB, tra ve ID cua doi tuong
         ResultSet resultSet;
         try (Connection connection = DriverManager.getConnection(dblink); PreparedStatement prepsInsertProduct = connection.prepareStatement(stm, Statement.RETURN_GENERATED_KEYS);) {
             prepsInsertProduct.execute();
@@ -53,7 +53,7 @@ public class DBconnector {
     }
 }
   /*
-    public static ResultSet pushData(String stm) {
+    public static ResultSet updateData(String stm) {
         //"insert into dbo.test (name) values('saoiet')"
         ResultSet resultSet = null;
         try (Connection connection = DriverManager.getConnection(dblink); PreparedStatement prepsInsertProduct = connection.prepareStatement(stm, Statement.RETURN_GENERATED_KEYS);) {

@@ -307,7 +307,7 @@ public class addHD extends javax.swing.JDialog {
 
     private void xacnhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xacnhanActionPerformed
         this.dispose();
-        HoaDonCtrl.xacnhanthem(tfKH);
+        HoaDonCtrl.xacnhanthemHD(tfKH);
         HoaDonCtrl.numberofHD--;
     }//GEN-LAST:event_xacnhanActionPerformed
     private void resizetbHD() {

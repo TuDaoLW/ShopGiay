@@ -69,7 +69,8 @@ public class HoaDonCtrl {
                 HangHoaCtrl.suaHH[0],
                 vl,
                 Integer.parseInt(HangHoaCtrl.suaHH[6]),
-                Integer.parseInt(HangHoaCtrl.suaHH[7])
+                Integer.parseInt(HangHoaCtrl.suaHH[7]),
+                maxsl
         );
         Item.dsmuaH.add(tmp);
         tong += vl * tmp.sell;
@@ -85,6 +86,11 @@ public class HoaDonCtrl {
             HangHoaCtrl.suaHH[6]});
     }
 
+    public static boolean layHangCanXoa() {
+        int row = addHD.tbHD.getSelectedRow();
+        return !(row < 0 || addHD.tbHD.getValueAt(row, 1).equals(""));
+    }
+
     public static void xoahang(JLabel sum) {
         int row = addHD.tbHD.getSelectedRow();
         Item del = Item.dsmuaH.get(row);
@@ -98,11 +104,6 @@ public class HoaDonCtrl {
         model.removeRow(row);
     }
 
-    public static boolean layHangCanXoa() {
-        int row = addHD.tbHD.getSelectedRow();
-        return !(row < 0 || addHD.tbHD.getValueAt(row, 1).equals(""));
-    }
-
     public static void khoitaoHD(JLabel lbtime, JLabel usr, JLabel lbmaHD) {
         date = LocalDate.now();// khoi tao cac tham so cho hoa don
         time = LocalTime.now();
@@ -110,7 +111,7 @@ public class HoaDonCtrl {
         System.out.println(time);
         lbtime.setText(date + " " + time.getHour() + ":" + time.getMinute());
         usr.setText(NvienCtrl.currentusr[2]);
-        maHD = DBconnector.pushData("insert into dbo.HoaDon(TenKH) values('empty')");
+        maHD = DBconnector.updateData("insert into dbo.HoaDon(TenKH) values('empty')");
         lbmaHD.setText(maHD + "");
         //tao hoa don rong, tra ve ma hoa don
         Item.dsmuaH.clear();
@@ -119,12 +120,12 @@ public class HoaDonCtrl {
     }
 
     public static void huyHD(JLabel maHD) {// xoa hoa don vua duoc tao o database
-        DBconnector.pushData("delete from dbo.HoaDon where MaHD ='" + maHD.getText() + "' ");
+        DBconnector.updateData("delete from dbo.HoaDon where MaHD ='" + maHD.getText() + "' ");
     }
 
-    public static void xacnhanthem(JTextField tfKH) {
+    public static void xacnhanthemHD(JTextField tfKH) {
         // ghi hoa don vao database
-        DBconnector.pushData("update dbo.HoaDon\n"
+        DBconnector.updateData("update dbo.HoaDon\n"
                 + "set\n"
                 + "SDT='" + NvienCtrl.currentusr[0] + "',\n"
                 + "TenKh='" + tfKH.getText() + "',\n"
@@ -132,9 +133,17 @@ public class HoaDonCtrl {
                 + "LoiNhuan='" + loinhuan + "',\n"
                 + "ThoiGian='" + date + " " + time.getHour() + ":" + time.getMinute() + "'\n"
                 + "where MaHD='" + maHD + "' ");
+        // cap nhat so luong hang con lai trong kho
+        for (Item it : Item.dsmuaH) {
+            DBconnector.updateData(
+                    "update shopgiay.dbo.Giay \n"
+                    + "set SoLuong='" + (it.MAX - it.SL) + "' \n"
+                    + "where ID='" + it.ID + "' "
+            );
+        }
         //ghi chitiet HD vao DB
         for (Item it : Item.dsmuaH) {
-            DBconnector.pushData("insert into dbo.ChiTietHD(MaHD,MaHH,SoLuong,GiaBan) "
+            DBconnector.updateData("insert into dbo.ChiTietHD(MaHD,MaHH,SoLuong,GiaBan) "
                     + "values("
                     + "'" + maHD + "',"
                     + "'" + it.ID + "',"
@@ -142,6 +151,11 @@ public class HoaDonCtrl {
                     + "'" + it.sell + "'"
                     + ")"
             );
+        }
+        if (NvienCtrl.currentusr[6].equals("1")) {
+            XemVaTimKiemCtrl.showtableHH(menuAdmin.tbHH, menuAdmin.lbsoHH);
+        } else {
+            XemVaTimKiemCtrl.showtableHH(menuNhanvien.tbHHnv, menuNhanvien.lbsoHHnv);
         }
     }
 

@@ -46,6 +46,10 @@ public class XemVaTimKiemCtrl {
         lbsohh.setText("" + HangHoaCtrl.numberofHH);
     }
 
+    public static void XemHoaDon(JTable tb) {
+        DisplayData(tb, "select * from shopgiay.dbo.HoaDon order by ThoiGian DESC ");
+    }
+
     public static void xemdoanhso(JTable tb, int m, int y, JLabel lbkq) {// cap nhat bang doanh so
         String stm1 = "select SDT, count(*), sum(TongTien), sum(LoiNhuan)\n"
                 + "from shopgiay.dbo.HoaDon\n"

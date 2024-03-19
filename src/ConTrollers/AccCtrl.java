@@ -36,7 +36,7 @@ public class AccCtrl {
             JOptionPane.showMessageDialog(jd, "Mật khẩu mới giống mật khẩu cũ");
             return;
         }
-        DBconnector.pushData("update dbo.NhanVien set Password = '" + tx2 + "' where SoDienThoai='" + NvienCtrl.currentusr[0] + "' ");
+        DBconnector.updateData("update dbo.NhanVien set Password = '" + tx2 + "' where SoDienThoai='" + NvienCtrl.currentusr[0] + "' ");
         JOptionPane.showMessageDialog(jd, "Đổi mật khẩu thành công");
         jd.dispose();
     }

@@ -1381,7 +1381,8 @@ public class menuAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton13ActionPerformed
 
     private void btXemDSHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXemDSHDActionPerformed
-        DisplayData(menuAdmin.tbHD, "select * from shopgiay.dbo.HoaDon order by ThoiGian DESC ");
+        XemVaTimKiemCtrl.XemHoaDon(tbHD);
+        // DisplayData(menuAdmin.tbHD, "select * from shopgiay.dbo.HoaDon order by ThoiGian DESC ");
         cards.show(pnlCenter, "cardHD");
     }//GEN-LAST:event_btXemDSHDActionPerformed
 
