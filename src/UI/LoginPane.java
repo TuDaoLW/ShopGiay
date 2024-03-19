@@ -2,10 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package bangiay;
+package UI;
 
 import java.awt.Color;
 import javax.swing.JButton;
+import ConTrollers.LogInCtrl;
 
 /**
  *
@@ -30,7 +31,7 @@ public class LoginPane extends javax.swing.JFrame {
     private void initComponents() {
 
         pnlW = new javax.swing.JPanel();
-        tf_usrname = new javax.swing.JTextField();
+        tfsdt = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         bt_cancel = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -41,18 +42,18 @@ public class LoginPane extends javax.swing.JFrame {
         pnlC = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("BANH GIAY");
-        setLocation(new java.awt.Point(150, 100));
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Đăng nhập");
+        setLocation(new java.awt.Point(260, 130));
         setResizable(false);
 
         pnlW.setBackground(new java.awt.Color(102, 102, 255));
         pnlW.setPreferredSize(new java.awt.Dimension(300, 400));
 
-        tf_usrname.setBackground(new java.awt.Color(153, 153, 255));
-        tf_usrname.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        tf_usrname.setForeground(new java.awt.Color(255, 255, 255));
-        tf_usrname.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        tfsdt.setBackground(new java.awt.Color(153, 153, 255));
+        tfsdt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tfsdt.setForeground(new java.awt.Color(255, 255, 255));
+        tfsdt.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -81,16 +82,16 @@ public class LoginPane extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Username");
+        jLabel2.setText("Tên đăng nhập");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Password");
+        jLabel3.setText("Mật khẩu");
 
         bt_login.setBackground(new java.awt.Color(153, 153, 255));
         bt_login.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         bt_login.setForeground(new java.awt.Color(255, 255, 255));
-        bt_login.setText("Login");
+        bt_login.setText("Log In");
         bt_login.setBorder(null);
         bt_login.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         bt_login.setFocusPainted(false);
@@ -129,7 +130,7 @@ public class LoginPane extends javax.swing.JFrame {
                             .addGroup(pnlWLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(pnlWLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
-                                    .addComponent(tf_usrname, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(tfsdt, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(pnlWLayout.createSequentialGroup()
                                     .addGroup(pnlWLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel3)
@@ -153,7 +154,7 @@ public class LoginPane extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tf_usrname, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tfsdt, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -164,7 +165,7 @@ public class LoginPane extends javax.swing.JFrame {
                 .addGroup(pnlWLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bt_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bt_login, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         getContentPane().add(pnlW, java.awt.BorderLayout.WEST);
@@ -187,20 +188,13 @@ public class LoginPane extends javax.swing.JFrame {
             pnlCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCLayout.createSequentialGroup()
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 4, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         getContentPane().add(pnlC, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void bt_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cancelActionPerformed
-        // TODO add your handling code here:
-        tf_passwd.setText("");
-        tf_usrname.setText("");
-        System.exit(0);
-    }//GEN-LAST:event_bt_cancelActionPerformed
 
     private void bt_cancelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_cancelMousePressed
         bt_setColorPressed(bt_cancel);
@@ -210,6 +204,10 @@ public class LoginPane extends javax.swing.JFrame {
         bt_setColorReleased(bt_cancel);
     }//GEN-LAST:event_bt_cancelMouseReleased
 
+    private void bt_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cancelActionPerformed
+        System.exit(0);// thoat app
+    }//GEN-LAST:event_bt_cancelActionPerformed
+
     private void bt_loginMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_loginMousePressed
         bt_setColorPressed(bt_login);
     }//GEN-LAST:event_bt_loginMousePressed
@@ -217,17 +215,11 @@ public class LoginPane extends javax.swing.JFrame {
     private void bt_loginMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_loginMouseReleased
         bt_setColorReleased(bt_login);
     }//GEN-LAST:event_bt_loginMouseReleased
-    int login(String name, String pw) {
-        return 1;
-    }
-    private void bt_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_loginActionPerformed
-        // TODO add your handling code here:
-        tf_usrname.getText();
-        tf_passwd.getText();
-        this.dispose();
 
-        new menuAdmin().show();
+    private void bt_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_loginActionPerformed
+        LogInCtrl.login(lb_info, tfsdt, tf_passwd, this);
     }//GEN-LAST:event_bt_loginActionPerformed
+
     void bt_setColorPressed(JButton bt) {
         bt.setBackground(new Color(102, 102, 255));
     }
@@ -236,9 +228,6 @@ public class LoginPane extends javax.swing.JFrame {
         bt.setBackground(new Color(153, 153, 255));
     }
 
-    /**
-     * @param args the command line arguments
-     */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_cancel;
@@ -251,6 +240,6 @@ public class LoginPane extends javax.swing.JFrame {
     private javax.swing.JPanel pnlC;
     private javax.swing.JPanel pnlW;
     private javax.swing.JPasswordField tf_passwd;
-    private javax.swing.JTextField tf_usrname;
+    private javax.swing.JTextField tfsdt;
     // End of variables declaration//GEN-END:variables
 }

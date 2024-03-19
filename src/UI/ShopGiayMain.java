@@ -1,7 +1,6 @@
+package UI;
 
-package bangiay;
-
-public class ShopGiay {
+public class ShopGiayMain {
 
     public static void main(String args[]) {
         try {
@@ -16,7 +15,11 @@ public class ShopGiay {
         }
 
         java.awt.EventQueue.invokeLater(() -> {
+
             new LoginPane().setVisible(true);
+//            new menuAdmin().setVisible(true);
+            //
+            //DBconnector.updateData("insert into dbo.Giay (name) values (' ') ");
         });
     }
 }
