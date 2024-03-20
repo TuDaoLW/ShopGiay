@@ -3,7 +3,7 @@ package ConTrollers;
 import UI.addHD;
 import UI.menuAdmin;
 import UI.menuNhanvien;
-import entity.Item;
+import entity.ChiTietHoaDon;
 import entity.DBconnector;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -32,7 +32,7 @@ public class HoaDonCtrl {
             return false;
         }
         // chon hang tu bang HH xong
-        if (Item.containItem(HangHoaCtrl.suaHH[0])) {
+        if (ChiTietHoaDon.containItem(HangHoaCtrl.suaHH[0])) {
             JOptionPane.showMessageDialog(jd, " Đã tồn tại mặt hàng này trong hóa đơn");
             return false;
         }//ktra trung lap
@@ -61,18 +61,18 @@ public class HoaDonCtrl {
             JOptionPane.showMessageDialog(jd, " Lỗi số lượng");
             return;
         }
-        if (Item.containItem(HangHoaCtrl.suaHH[0])) {
+        if (ChiTietHoaDon.containItem(HangHoaCtrl.suaHH[0])) {
             JOptionPane.showMessageDialog(jd, " Đã tồn tại mặt hàng này trong hóa đơn");
             return;
         }//ktra trung lap
-        Item tmp = new Item(
+        ChiTietHoaDon tmp = new ChiTietHoaDon(
                 HangHoaCtrl.suaHH[0],
                 vl,
                 Integer.parseInt(HangHoaCtrl.suaHH[6]),
                 Integer.parseInt(HangHoaCtrl.suaHH[7]),
                 maxsl
         );
-        Item.dsmuaH.add(tmp);
+        ChiTietHoaDon.dsmuaH.add(tmp);
         tong += vl * tmp.sell;
         loinhuan += vl * tmp.sell - vl * tmp.buy;
         System.out.println("loi " + loinhuan);// log loi nhuan
@@ -93,11 +93,11 @@ public class HoaDonCtrl {
 
     public static void xoahang(JLabel sum) {
         int row = addHD.tbHD.getSelectedRow();
-        Item del = Item.dsmuaH.get(row);
+        ChiTietHoaDon del = ChiTietHoaDon.dsmuaH.get(row);
         System.out.println("xoa vat pham: " + del.ID + " " + del.SL);
         tong -= del.SL * del.sell;
         loinhuan = loinhuan + del.SL * del.buy - del.SL * del.sell;
-        Item.dsmuaH.remove(row);
+        ChiTietHoaDon.dsmuaH.remove(row);
         sum.setText(tong + "");
         System.out.println("loi nhuan sau khi xoa " + loinhuan);
         DefaultTableModel model = (DefaultTableModel) addHD.tbHD.getModel();
@@ -114,7 +114,7 @@ public class HoaDonCtrl {
         maHD = DBconnector.updateData("insert into dbo.HoaDon(TenKH) values('empty')");
         lbmaHD.setText(maHD + "");
         //tao hoa don rong, tra ve ma hoa don
-        Item.dsmuaH.clear();
+        ChiTietHoaDon.dsmuaH.clear();
         tong = 0;
         loinhuan = 0;
     }
@@ -134,7 +134,7 @@ public class HoaDonCtrl {
                 + "ThoiGian='" + date + " " + time.getHour() + ":" + time.getMinute() + "'\n"
                 + "where MaHD='" + maHD + "' ");
         // cap nhat so luong hang con lai trong kho
-        for (Item it : Item.dsmuaH) {
+        for (ChiTietHoaDon it : ChiTietHoaDon.dsmuaH) {
             DBconnector.updateData(
                     "update shopgiay.dbo.Giay \n"
                     + "set SoLuong='" + (it.MAX - it.SL) + "' \n"
@@ -142,7 +142,7 @@ public class HoaDonCtrl {
             );
         }
         //ghi chitiet HD vao DB
-        for (Item it : Item.dsmuaH) {
+        for (ChiTietHoaDon it : ChiTietHoaDon.dsmuaH) {
             DBconnector.updateData("insert into dbo.ChiTietHD(MaHD,MaHH,SoLuong,GiaBan) "
                     + "values("
                     + "'" + maHD + "',"
