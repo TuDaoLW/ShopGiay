@@ -14,7 +14,7 @@ public class AccCtrl {
         String tx1 = pf1.getText();
         String tx2 = pf2.getText();
         String tx3 = pf3.getText();
-        //doi mat khau user hien tai
+        //doi mat khau user hien tai 
         ResultSet rs = DBconnector.getData("select Password from dbo.NhanVien "
                 + "where SoDienThoai = '" + NvienCtrl.currentusr[0] + "' "
                 + "and Password = '" + tx1 + "' ");
