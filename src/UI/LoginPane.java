@@ -173,21 +173,21 @@ public class LoginPane extends javax.swing.JFrame {
         pnlC.setBackground(new java.awt.Color(255, 255, 255));
         pnlC.setPreferredSize(new java.awt.Dimension(400, 400));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/shoe1.png"))); // NOI18N
-        jLabel4.setPreferredSize(new java.awt.Dimension(400, 400));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/z5267053059024_82b48cdb2438cb9c48090ad63da9ff11.jpg"))); // NOI18N
+        jLabel4.setText("jLabel4");
 
         javax.swing.GroupLayout pnlCLayout = new javax.swing.GroupLayout(pnlC);
         pnlC.setLayout(pnlCLayout);
         pnlCLayout.setHorizontalGroup(
             pnlCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCLayout.createSequentialGroup()
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel4)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         pnlCLayout.setVerticalGroup(
             pnlCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCLayout.createSequentialGroup()
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(pnlCLayout.createSequentialGroup()
+                .addComponent(jLabel4)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
