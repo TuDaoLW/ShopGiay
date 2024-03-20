@@ -2,16 +2,16 @@ package entity;
 
 import java.util.ArrayList;
 
-public class Item {
+public class ChiTietHoaDon {
 
-    public static ArrayList<Item> dsmuaH = new ArrayList<>();
+    public static ArrayList<ChiTietHoaDon> dsmuaH = new ArrayList<>();
     public String ID;
     public int SL;
     public int sell;
     public int buy;
     public int MAX;
 
-    public Item(String ID, int SL, int sell, int buy, int max) {
+    public ChiTietHoaDon(String ID, int SL, int sell, int buy, int max) {
         this.ID = ID;
         this.SL = SL;
         this.sell = sell;
@@ -20,7 +20,7 @@ public class Item {
     }
 
     public static void delete(String id) {
-        for (Item it : dsmuaH) {
+        for (ChiTietHoaDon it : dsmuaH) {
             if (it.ID.equals(id)) {
                 dsmuaH.remove(it);
             }
@@ -28,7 +28,7 @@ public class Item {
     }
 
     public static boolean containItem(String id) {
-        for (Item it : dsmuaH) {
+        for (ChiTietHoaDon it : dsmuaH) {
             if (it.ID.equals(id)) {
                 return true;
             }
@@ -36,8 +36,8 @@ public class Item {
         return false;
     }
 
-    public static Item searchItem(String id) {
-        for (Item it : dsmuaH) {
+    public static ChiTietHoaDon searchItem(String id) {
+        for (ChiTietHoaDon it : dsmuaH) {
             if (it.ID.equals(id)) {
                 return it;
             }
