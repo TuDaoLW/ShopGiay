@@ -9,7 +9,10 @@ import java.sql.PreparedStatement;
 
 public class DBconnector {
 
-    static String dblink = "jdbc:sqlserver://localhost:1433;databaseName=shopgiay;user=sa;password=tudao;encrypt=true;trustServerCertificate=true";
+    static String dblink = "jdbc:sqlserver://localhost:1433;databaseName=shopgiay;"
+            + "user=sa;"// your username
+            + "password=tudao;"// yourpassword
+            + "encrypt=true;trustServerCertificate=true";
 
     // link ket noi toi database
     public static ResultSet getData(String stm) {
@@ -29,7 +32,7 @@ public class DBconnector {
             prepsInsertProduct.execute();
             resultSet = prepsInsertProduct.getGeneratedKeys();
             while (resultSet.next()) {
-                System.out.println("genarated"+resultSet.getInt(1));
+                System.out.println("genarated" + resultSet.getInt(1));
                 return resultSet.getInt(1);
             }
         } catch (Exception e) {
@@ -52,7 +55,7 @@ public class DBconnector {
         return records; // so ban ghi thoa man truy van
     }
 }
-  /*
+/*
     public static ResultSet updateData(String stm) {
         //"insert into dbo.test (name) values('saoiet')"
         ResultSet resultSet = null;
@@ -67,4 +70,4 @@ public class DBconnector {
 
         return resultSet;// id duoc tao boi database
     }
-     */
+ */

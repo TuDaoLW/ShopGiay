@@ -12,7 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 public class menuNhanvien extends javax.swing.JFrame {
-    
+
     public menuNhanvien() {
         initComponents();
         cards = (CardLayout) pnlCenter.getLayout();
@@ -21,7 +21,7 @@ public class menuNhanvien extends javax.swing.JFrame {
         resizetbHD();
         XemVaTimKiemCtrl.showtableHH(tbHHnv, lbsoHHnv);
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -827,8 +827,12 @@ public class menuNhanvien extends javax.swing.JFrame {
 
     private void bt_hangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_hangActionPerformed
         cards.show(pnlCenter, "cardHH");
+        enableBtt();
     }//GEN-LAST:event_bt_hangActionPerformed
-
+    public void enableBtt() {
+        bt_addHH.setEnabled(true);
+        bt_suaHH.setEnabled(true);
+    }
     private void bt_taohoadonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_taohoadonMousePressed
         bt_resetColor();
         bt_setColor(bt_taohoadon);
@@ -838,6 +842,8 @@ public class menuNhanvien extends javax.swing.JFrame {
         if (HoaDonCtrl.numberofHD == 0) {
             cards.show(pnlCenter, "cardHH");
             new addHD(this, false).setVisible(true);
+            bt_addHH.setEnabled(false);
+            bt_suaHH.setEnabled(false);
             HoaDonCtrl.numberofHD++;
         } else {
             JOptionPane.showMessageDialog(rootPane, "Chỉ tạo 1 hóa đơn cùng lúc");
@@ -906,21 +912,21 @@ public class menuNhanvien extends javax.swing.JFrame {
     void bt_setColor(JButton bt) {
         bt.setBackground(new Color(0, 153, 153));
     }
-    
+
     void bt_resetColor() {
         bt_hang.setBackground(new Color(102, 51, 255));
         bt_taohoadon.setBackground(new Color(102, 51, 255));
         bt_doanhthu.setBackground(new Color(102, 51, 255));
         bt_taikhoan.setBackground(new Color(102, 51, 255));
     }
-    
+
     private void resizetbHH() {
         tbHHnv.getColumnModel().getColumn(0).setPreferredWidth(35);
         tbHHnv.getColumnModel().getColumn(1).setPreferredWidth(220);
         tbHHnv.getColumnModel().getColumn(2).setPreferredWidth(110);
         tbHHnv.getColumnModel().getColumn(4).setPreferredWidth(100);
     }
-    
+
     private void resizetbHD() {
         tbHDnv.getColumnModel().getColumn(0).setPreferredWidth(40);
         tbHDnv.getColumnModel().getColumn(5).setPreferredWidth(180);
