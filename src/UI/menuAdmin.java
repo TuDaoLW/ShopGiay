@@ -532,7 +532,7 @@ public class menuAdmin extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8"
+                "SDT", "PassWord", "Ho Ten", "Gioi Tinh", "Dia Chi", "Luong", "Chuc Vu", "Trang Thai Tai Khoan"
             }
         ) {
             Class[] types = new Class [] {
@@ -1301,6 +1301,7 @@ public class menuAdmin extends javax.swing.JFrame {
 
     private void bt_hangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_hangActionPerformed
         cards.show(pnlCenter, "cardHH");
+        enableBtt();
     }//GEN-LAST:event_bt_hangActionPerformed
 
     private void bt_taohoadonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_taohoadonMousePressed
@@ -1312,12 +1313,17 @@ public class menuAdmin extends javax.swing.JFrame {
         if (HoaDonCtrl.numberofHD == 0) {
             cards.show(pnlCenter, "cardHH");
             new addHD(this, false).setVisible(true);
+            bt_addHH.setEnabled(false);
+            bt_suaHH.setEnabled(false);
             HoaDonCtrl.numberofHD++;
         } else {
             JOptionPane.showMessageDialog(rootPane, "Chỉ tạo 1 hóa đơn cùng lúc");
         }
     }//GEN-LAST:event_bt_taohoadonActionPerformed
-
+    public void enableBtt() {
+        bt_addHH.setEnabled(true);
+        bt_suaHH.setEnabled(true);
+    }
     private void bt_nvienMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_nvienMousePressed
         bt_resetColor();
         bt_setColor(bt_nvien);
