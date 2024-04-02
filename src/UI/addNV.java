@@ -103,7 +103,7 @@ public class addNV extends javax.swing.JDialog {
             }
         });
 
-        cboxchucvu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nhân viên", "Quản lý", "Chủ tịch", " " }));
+        cboxchucvu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nhân viên", "Quản lý" }));
 
         rate.setText("25000");
 

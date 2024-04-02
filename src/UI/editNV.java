@@ -32,7 +32,11 @@ public class editNV extends javax.swing.JDialog {
         }
         address.setText(NvienCtrl.suaNV[4]);
         rate.setText(NvienCtrl.suaNV[5]);
-        cboxchucvu.setSelectedIndex(Integer.parseInt(NvienCtrl.suaNV[6]));
+        if (NvienCtrl.suaNV[6].equals("Nhân viên")) {
+            cboxchucvu.setSelectedIndex(0);
+        } else {
+            cboxchucvu.setSelectedIndex(1);
+        }
         if (NvienCtrl.suaNV[7].equals("0")) {
             cboxstate.setSelected(true);
         }
@@ -118,7 +122,7 @@ public class editNV extends javax.swing.JDialog {
             }
         });
 
-        cboxchucvu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nhân viên", "Chủ tịch", "Quản lý", " ", " " }));
+        cboxchucvu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nhân viên", "Quản lý", " ", " " }));
 
         rate.setText("25000");
 
