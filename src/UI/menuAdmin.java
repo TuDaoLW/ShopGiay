@@ -5,7 +5,6 @@ import ConTrollers.AccCtrl;
 import ConTrollers.HoaDonCtrl;
 import ConTrollers.HangHoaCtrl;
 import ConTrollers.NvienCtrl;
-import static ConTrollers.XemVaTimKiemCtrl.DisplayData;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.time.LocalDate;
@@ -19,7 +18,7 @@ public class menuAdmin extends javax.swing.JFrame {
         initComponents();
         cards = (CardLayout) pnlCenter.getLayout();
         resizetbHH();
-        resizetbNV();
+        //resizetbNV();
         resizetbHD();
         usname.setText(NvienCtrl.currentusr[2]);
         XemVaTimKiemCtrl.showtableHH(tbHH, lbsoHH);

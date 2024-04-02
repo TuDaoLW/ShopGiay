@@ -82,7 +82,7 @@ public class NvienCtrl {
                 + "TrangThaiTaiKhoan=" + trangthai + "\n"
                 + "where SoDienThoai like '%" + lbuser.getText() + "%'"
         );
-        System.out.println(cboxchucvu.getSelectedIndex());
+        //System.out.println(cboxchucvu.getSelectedIndex());
         XemVaTimKiemCtrl.showtableNV();
         JOptionPane.showMessageDialog(f, "Cập nhật thành công");
         f.dispose();

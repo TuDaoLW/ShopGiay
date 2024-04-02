@@ -38,6 +38,25 @@ public class XemVaTimKiemCtrl {
 
     public static void showtableNV() {// cap nhat bang nhan vien
         NvienCtrl.numberofnv = DisplayData(menuAdmin.tbNV, "select * from dbo.NhanVien ");
+        TableModel md = menuAdmin.tbNV.getModel();
+        for (int i = 0; i < NvienCtrl.numberofnv; i++) {
+            if (md.getValueAt(i, 3).equals("1")) {
+                md.setValueAt("Nam", i, 3);
+            } else {
+                md.setValueAt("Nữ", i, 3);
+            }
+            if (md.getValueAt(i, 6).equals("1")) {
+                md.setValueAt("Quản lý", i, 6);
+            } else {
+                md.setValueAt("Nhân viên", i, 6);
+            }
+            if (md.getValueAt(i, 7).equals("1")) {
+                md.setValueAt("Hoạt động", i, 7);
+            } else {
+                md.setValueAt("Đã khóa", i, 7);
+            }
+
+        }
         menuAdmin.soNV.setText("" + NvienCtrl.numberofnv);
     }
 
@@ -76,7 +95,7 @@ public class XemVaTimKiemCtrl {
             while (rs.next()) {
                 sum = rs.getInt(1);
                 pro = rs.getInt(2);
-                System.out.println(sum + ":" + pro);
+                //System.out.println(sum + ":" + pro);
             }
         } catch (SQLException ex) {
             System.out.println("No record in HD");

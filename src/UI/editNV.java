@@ -32,7 +32,11 @@ public class editNV extends javax.swing.JDialog {
         }
         address.setText(NvienCtrl.suaNV[4]);
         rate.setText(NvienCtrl.suaNV[5]);
-        cboxchucvu.setSelectedIndex(Integer.parseInt(NvienCtrl.suaNV[6]));
+        if (NvienCtrl.suaNV[6].equals("Nhân viên")) {
+            cboxchucvu.setSelectedIndex(0);
+        } else {
+            cboxchucvu.setSelectedIndex(1);
+        }
         if (NvienCtrl.suaNV[7].equals("0")) {
             cboxstate.setSelected(true);
         }
@@ -47,6 +51,7 @@ public class editNV extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         sdt = new javax.swing.JTextField();
@@ -100,6 +105,7 @@ public class editNV extends javax.swing.JDialog {
 
         jLabel7.setText("Chức vụ");
 
+        buttonGroup1.add(jRadioButton1);
         jRadioButton1.setSelected(true);
         jRadioButton1.setText("Nam");
         jRadioButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -108,6 +114,7 @@ public class editNV extends javax.swing.JDialog {
             }
         });
 
+        buttonGroup1.add(jRadioButton2);
         jRadioButton2.setText("Nữ");
         jRadioButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -115,7 +122,7 @@ public class editNV extends javax.swing.JDialog {
             }
         });
 
-        cboxchucvu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nhân viên", "Chủ tịch", "Quản lý", " ", " " }));
+        cboxchucvu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nhân viên", "Quản lý", " ", " " }));
 
         rate.setText("25000");
 
@@ -245,6 +252,7 @@ public class editNV extends javax.swing.JDialog {
     private int gioitinh = 1;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField address;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cboxchucvu;
     private javax.swing.JCheckBox cboxstate;
     private javax.swing.JButton jButton1;

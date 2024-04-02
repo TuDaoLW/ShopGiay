@@ -30,7 +30,7 @@ public class LogInCtrl {
         } catch (NullPointerException e) {
             System.out.println("No acc found");
         }
-        System.out.println(array[0] + " " + array[1]); // log thong tin dang nhap
+        //System.out.println(array[0] + " " + array[1]); // log thong tin dang nhap
         switch (array[0]) {
             case 0 ->
                 lb_info.setText("tài khoản đã bị vô hiệu hóa");

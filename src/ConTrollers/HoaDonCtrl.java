@@ -39,7 +39,7 @@ public class HoaDonCtrl {
         try {
             maxsl = Integer.parseInt(HangHoaCtrl.suaHH[5]);
         } catch (NumberFormatException e) {
-            System.out.println("Lỗi parse số lượng");
+            System.out.println("Lỗi parse số lượng HH");
             return false;
         }
         if (maxsl == 0) {
@@ -75,7 +75,7 @@ public class HoaDonCtrl {
         ChiTietHoaDon.dsmuaH.add(tmp);
         tong += vl * tmp.sell;
         loinhuan += vl * tmp.sell - vl * tmp.buy;
-        System.out.println("loi " + loinhuan);// log loi nhuan
+        //System.out.println("loi " + loinhuan);// log loi nhuan
         lbtong.setText(tong + " vnd");
         // in len bang
         DefaultTableModel model = (DefaultTableModel) addHD.tbHD.getModel();
@@ -94,12 +94,12 @@ public class HoaDonCtrl {
     public static void xoahang(JLabel sum) {
         int row = addHD.tbHD.getSelectedRow();
         ChiTietHoaDon del = ChiTietHoaDon.dsmuaH.get(row);
-        System.out.println("xoa vat pham: " + del.ID + " " + del.SL);
+        //System.out.println("xoa vat pham: " + del.ID + " " + del.SL);
         tong -= del.SL * del.sell;
         loinhuan = loinhuan + del.SL * del.buy - del.SL * del.sell;
         ChiTietHoaDon.dsmuaH.remove(row);
         sum.setText(tong + "");
-        System.out.println("loi nhuan sau khi xoa " + loinhuan);
+        //System.out.println("loi nhuan sau khi xoa " + loinhuan);
         DefaultTableModel model = (DefaultTableModel) addHD.tbHD.getModel();
         model.removeRow(row);
     }
@@ -107,8 +107,8 @@ public class HoaDonCtrl {
     public static void khoitaoHD(JLabel lbtime, JLabel usr, JLabel lbmaHD) {
         date = LocalDate.now();// khoi tao cac tham so cho hoa don
         time = LocalTime.now();
-        System.out.println(date);
-        System.out.println(time);
+        //System.out.println(date);
+        //System.out.println(time);
         lbtime.setText(date + " " + time.getHour() + ":" + time.getMinute());
         usr.setText(NvienCtrl.currentusr[2]);
         maHD = DBconnector.updateData("insert into dbo.HoaDon(TenKH) values('empty')");
@@ -165,7 +165,7 @@ public class HoaDonCtrl {
             return false;
         }
         HoaDonCtrl.XemHD = (String) tbhd.getValueAt(row, 0);
-        System.out.println("HD so: " + XemHD);
+        //System.out.println("HD so: " + XemHD);
         return true;
     }
 }
